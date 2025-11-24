@@ -16,7 +16,7 @@ Edit `~/Library/Application Support/Claude/claude_desktop_config.json` and add:
       "command": "npx",
       "args": ["2slides-mcp"],
       "env": {
-        "API_KEY": "YOUR_2SLIDES_API_KEY"
+        "2SLIDES_API_KEY": "YOUR_2SLIDES_API_KEY"
       }
     }
   }

@@ -7,11 +7,11 @@ import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 // Constants
 const API_BASE_URL = 'https://2slides.com';
 dotenv.config();
-const API_KEY = process.env.API_KEY ?? '';
+const API_KEY = process.env['2SLIDES_API_KEY'] ?? '';
 
 if (!API_KEY) {
   // eslint-disable-next-line no-console
-  console.error('Missing API_KEY in environment. Create .env and set API_KEY=...');
+  console.error('Missing 2SLIDES_API_KEY in environment. Create .env and set 2SLIDES_API_KEY=...');
 }
 
 // Initialize MCP server

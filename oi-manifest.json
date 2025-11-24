@@ -1,0 +1,93 @@
+{
+  "server_name": "OI-mcp-2slides",
+  "version": "1.0.0",
+  "intents": [
+    {
+      "keyword": "2slides generate slides",
+      "tool_name": "slides_generate",
+      "priority": 10
+    },
+    {
+      "keyword": "2slides generate",
+      "tool_name": "slides_generate",
+      "priority": 10
+    },
+    {
+      "keyword": "generate slides",
+      "tool_name": "slides_generate",
+      "priority": 10
+    },
+    {
+      "keyword": "create slides",
+      "tool_name": "slides_generate",
+      "priority": 10
+    },
+    {
+      "keyword": "make slides",
+      "tool_name": "slides_generate",
+      "priority": 10
+    },
+    {
+      "keyword": "2slides get job",
+      "tool_name": "jobs_get",
+      "priority": 10
+    },
+    {
+      "keyword": "2slides job status",
+      "tool_name": "jobs_get",
+      "priority": 10
+    },
+    {
+      "keyword": "check job status",
+      "tool_name": "jobs_get",
+      "priority": 10
+    },
+    {
+      "keyword": "get job",
+      "tool_name": "jobs_get",
+      "priority": 10
+    },
+    {
+      "keyword": "2slides search themes",
+      "tool_name": "themes_search",
+      "priority": 10
+    },
+    {
+      "keyword": "2slides find themes",
+      "tool_name": "themes_search",
+      "priority": 10
+    },
+    {
+      "keyword": "search themes",
+      "tool_name": "themes_search",
+      "priority": 10
+    },
+    {
+      "keyword": "find themes",
+      "tool_name": "themes_search",
+      "priority": 10
+    },
+    {
+      "keyword": "2slides themes",
+      "tool_name": "themes_search",
+      "priority": 10
+    }
+  ],
+  "parameter_extractors": {
+    "slides_generate": {
+      "OI-mcp-2slides::slides_generate.themeId": "regex:(?:theme[\\s:]*id|themeId|theme)[\\s:]*([a-zA-Z0-9_-]+)|regex:(st-[a-zA-Z0-9_-]+)",
+      "OI-mcp-2slides::slides_generate.userInput": "regex:(?:about|on|for)\\s+(.+)|remove:generate,create,make,slides,presentation,ppt,with,using,theme,about,st-[a-zA-Z0-9_-]+",
+      "OI-mcp-2slides::slides_generate.responseLanguage": "conditional:if_matches:(?:language|lang)[\\s:]*([A-Za-z]+)|then:regex:(?:language|lang)[\\s:]*([A-Za-z]+)|else:default:English",
+      "OI-mcp-2slides::slides_generate.mode": "conditional:if_matches:(?:mode)[\\s:]*(sync|async)|then:regex:(?:mode)[\\s:]*(sync|async)|else:default:sync"
+    },
+    "jobs_get": {
+      "OI-mcp-2slides::jobs_get.jobId": "regex:(?:job[\\s:]*id|jobId)[\\s:]*([A-Za-z0-9]+)"
+    },
+    "themes_search": {
+      "OI-mcp-2slides::themes_search.query": "remove:search,find,themes,templates,for,2slides",
+      "OI-mcp-2slides::themes_search.limit": "regex:(?:limit|max|results?)[\\s:]+(\\d+)"
+    }
+  },
+  "reminder_message": "2slides MCP server for generating presentations and slides. Requires 2SLIDES_API_KEY environment variable. Get your API key from 2slides.com/api"
+}
+
